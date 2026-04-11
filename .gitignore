@@ -1,3 +1,20 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Downloads
+downloads/
+
+# Cookies
+cookies.txt
+*.cookies
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
 .idea
-downloads
-venv

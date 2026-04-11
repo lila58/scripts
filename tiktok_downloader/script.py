@@ -5,7 +5,6 @@ import sys
 def download_tiktok_videos(tiktok_url, output_folder="./downloads"):
     """
     Download TikTok videos using yt-dlp
-    
     Args:
         tiktok_url: TikTok profile URL or video URL
         output_folder: Directory to save downloaded videos
@@ -36,13 +35,18 @@ def download_tiktok_videos(tiktok_url, output_folder="./downloads"):
         return False
 
 if __name__ == "__main__":
-    # Example usage - replace with real TikTok URL
-    tiktok_url = "https://www.tiktok.com/@username"
-    output_folder = "./downloads"
+    if len(sys.argv) < 2:
+        print("Usage: python script.py <username> [output_folder]")
+        print("Example: python script.py khaby.lame")
+        sys.exit(1)
     
-    if len(sys.argv) > 1:
-        tiktok_url = sys.argv[1]
-    if len(sys.argv) > 2:
-        output_folder = sys.argv[2]
+    username = sys.argv[1]
+    
+    if username.startswith('@'):
+        username = username[1:]
+    
+    tiktok_url = f"https://www.tiktok.com/@{username}"
+    
+    output_folder = sys.argv[2] if len(sys.argv) > 2 else "./downloads"
     
     download_tiktok_videos(tiktok_url, output_folder)
